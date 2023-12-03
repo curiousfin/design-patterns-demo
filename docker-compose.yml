@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  app:
+    build:
+        context: docker/php
+    volumes:
+      - ./:/app
+      - ./docker/php/conf.d/:/usr/local/etc/php/conf.d/
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.27.0/24
