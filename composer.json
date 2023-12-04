@@ -1,0 +1,28 @@
+{
+    "name": "curiousfin/design-patterns-demo",
+    "description": "Demo design patterns",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Curiousfin\\DesignPatternsDemo\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Curiousfin\\DesignPatternsDemo\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "curiousfin",
+            "email": "curiousfin9@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5"
+    }
+}
