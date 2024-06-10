@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Curiousfin\DesignPatternsDemo\Tests\SOLID\OpenClosed\After;
@@ -9,10 +10,15 @@ use Curiousfin\DesignPatternsDemo\SOLID\OpenClosed\After\PSRFormatter;
 use Curiousfin\DesignPatternsDemo\SOLID\OpenClosed\After\UglyFormatter;
 use PHPUnit\Framework\TestCase;
 
-class CodeFormatterTest extends TestCase
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
+final class CodeFormatterTest extends TestCase
 {
     /**
-     * @dataProvider formatDataProvider
+     * @dataProvider provideFormatCases
      */
     public function testFormat(
         CodeFormatterInterface $codeFormatter,
@@ -20,20 +26,20 @@ class CodeFormatterTest extends TestCase
         string $expectedCode
     ): void {
         $codeFormatter = new CodeFormatter($codeFormatter);
-        $this->assertSame($expectedCode, $codeFormatter->format($code));
+        self::assertSame($expectedCode, $codeFormatter->format($code));
     }
 
-    public static function formatDataProvider(): iterable
+    public static function provideFormatCases(): iterable
     {
         yield 'psr' => [
             new PSRFormatter(),
-            "code",
+            'code',
             'pretty formatted: code',
         ];
 
         yield 'ugly' => [
             new UglyFormatter(),
-            "code",
+            'code',
             'ugly formatted: code',
         ];
     }

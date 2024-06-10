@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Curiousfin\DesignPatternsDemo\Tests\Behavioral\ChainOfResponsibility\After;
@@ -7,10 +8,15 @@ use Curiousfin\DesignPatternsDemo\Behavioral\ChainOfResponsibility\After\America
 use Curiousfin\DesignPatternsDemo\Behavioral\ChainOfResponsibility\After\EspressoHandler;
 use PHPUnit\Framework\TestCase;
 
-class AbstractCoffeeHandlerTest extends TestCase
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
+final class AbstractCoffeeHandlerTest extends TestCase
 {
     /**
-     * @dataProvider makeCoffeeDataProvider
+     * @dataProvider provideMakeCoffeeCases
      */
     public function testMakeCoffee(int $coffeeType, string $expectedCoffee)
     {
@@ -18,24 +24,24 @@ class AbstractCoffeeHandlerTest extends TestCase
         $americanoHandler = new AmericanoHandler();
         $espressoHandler->setNextCoffeeHandler($americanoHandler);
 
-        $this->assertSame($expectedCoffee, $espressoHandler->makeCoffee($coffeeType));
+        self::assertSame($expectedCoffee, $espressoHandler->makeCoffee($coffeeType));
     }
 
-    public static function makeCoffeeDataProvider(): iterable
+    public static function provideMakeCoffeeCases(): iterable
     {
         yield 'espresso' => [
             1,
-            'Make espresso coffee'
+            'Make espresso coffee',
         ];
 
         yield 'americano' => [
             2,
-            'Make americano coffee'
+            'Make americano coffee',
         ];
 
         yield 'no coffee' => [
             3,
-            'No coffee for you!'
+            'No coffee for you!',
         ];
     }
 }

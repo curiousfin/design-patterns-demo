@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Curiousfin\DesignPatternsDemo\Tests\Structural\Adapter;
@@ -7,7 +8,12 @@ use Curiousfin\DesignPatternsDemo\Structural\Adapter\Adapter;
 use Curiousfin\DesignPatternsDemo\Structural\Adapter\Converter;
 use PHPUnit\Framework\TestCase;
 
-class AdapterTest extends TestCase
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
+final class AdapterTest extends TestCase
 {
     private Adapter $adapter;
 
@@ -34,6 +40,6 @@ class AdapterTest extends TestCase
 
         $adaptedData = $this->adapter->convert($json);
 
-        $this->assertSame($expectedData, $adaptedData);
+        self::assertSame($expectedData, $adaptedData);
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Curiousfin\DesignPatternsDemo\Tests\Structural\Composite;
@@ -8,7 +9,12 @@ use Curiousfin\DesignPatternsDemo\Structural\Composite\Director;
 use Curiousfin\DesignPatternsDemo\Structural\Composite\Employee;
 use PHPUnit\Framework\TestCase;
 
-class CompanyUnitCompositeTest extends TestCase
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
+final class CompanyUnitCompositeTest extends TestCase
 {
     private CompanyUnitComposite $companyUnitComposite;
 
@@ -29,6 +35,6 @@ class CompanyUnitCompositeTest extends TestCase
         $this->companyUnitComposite->addEmployee(new Employee('Alex', 'Product Manager', 4000));
         $this->companyUnitComposite->addEmployee(new Employee('Mike', 'Developer', 5000));
 
-        $this->assertEquals(69000, $this->companyUnitComposite->getSalary());
+        self::assertSame(69000, $this->companyUnitComposite->getSalary());
     }
 }

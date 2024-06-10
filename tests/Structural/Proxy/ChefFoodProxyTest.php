@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Curiousfin\DesignPatternsDemo\Tests\Structural\Proxy;
@@ -8,7 +9,12 @@ use Curiousfin\DesignPatternsDemo\Structural\Proxy\ChefFoodProxy;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-class ChefFoodProxyTest extends TestCase
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
+final class ChefFoodProxyTest extends TestCase
 {
     private ChefFoodProxy $chefFoodProxy;
     private ChefFoodMaker|MockObject $chefFoodMakerMock;
@@ -33,17 +39,17 @@ class ChefFoodProxyTest extends TestCase
         $ingredients = ['tomato', 'cheese', 'ham', 'mushrooms'];
 
         $this->chefFoodMakerMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('prepare')
             ->with(...$ingredients)
             ->willReturn($expectedFood);
 
-        $this->assertSame(
+        self::assertSame(
             $expectedFood,
             $this->chefFoodProxy->prepare(...$ingredients)
         );
 
-        $this->assertSame(
+        self::assertSame(
             $expectedFood,
             $this->chefFoodProxy->prepare(...$ingredients)
         );

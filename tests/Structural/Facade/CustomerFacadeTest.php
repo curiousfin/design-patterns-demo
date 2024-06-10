@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Curiousfin\DesignPatternsDemo\Tests\Structural\Facade;
@@ -13,13 +14,18 @@ use Curiousfin\DesignPatternsDemo\Structural\Facade\NotificationServiceInterface
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-class CustomerFacadeTest extends TestCase
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
+final class CustomerFacadeTest extends TestCase
 {
     private CustomerFacade $customerFacade;
     private CustomerService|MockObject $customerServiceMock;
-    private NotificationService|MockObject $notificationServiceMock;
+    private MockObject|NotificationService $notificationServiceMock;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->customerServiceMock = $this->createMock(CustomerServiceInterface::class);
         $this->notificationServiceMock = $this->createMock(NotificationServiceInterface::class);
@@ -42,19 +48,19 @@ class CustomerFacadeTest extends TestCase
         $expectedCustomer = new Customer($customerEmail);
 
         $this->customerServiceMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('create')
             ->with($customerDTO)
             ->willReturn($expectedCustomer);
 
         $this->notificationServiceMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('send')
             ->with($expectedCustomer)
             ->willReturn(true);
 
         $customer = $this->customerFacade->create($customerDTO);
 
-        $this->assertSame($expectedCustomer, $customer);
+        self::assertSame($expectedCustomer, $customer);
     }
 }

@@ -1,9 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Curiousfin\DesignPatternsDemo\Structural\Facade;
 
-class NotificationService implements NotificationServiceInterface
+final class NotificationService implements NotificationServiceInterface
 {
     public function send(Customer $customer): bool
     {

@@ -1,13 +1,14 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Curiousfin\DesignPatternsDemo\Behavioral\ChainOfResponsibility\After;
 
-class AmericanoHandler extends AbstractCoffeeHandler
+final class AmericanoHandler extends AbstractCoffeeHandler
 {
     public function makeCoffee(int $coffeeType): string
     {
-        if ($coffeeType === 2) {
+        if (2 === $coffeeType) {
             return 'Make americano coffee';
         }
 

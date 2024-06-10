@@ -1,9 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Curiousfin\DesignPatternsDemo\SOLID\SingleResponsobility\Before;
 
-class User
+final class User
 {
     public function __construct(private string $email)
     {

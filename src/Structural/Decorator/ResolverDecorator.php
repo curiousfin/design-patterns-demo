@@ -1,9 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Curiousfin\DesignPatternsDemo\Structural\Decorator;
 
-class ResolverDecorator implements ResolverInterface
+final class ResolverDecorator implements ResolverInterface
 {
     public function __construct(private ResolverInterface $resolver)
     {

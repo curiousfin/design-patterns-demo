@@ -1,9 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Curiousfin\DesignPatternsDemo\SOLID\SingleResponsibility\After;
 
-class UserRepository
+final class UserRepository
 {
     public function save(User $user): bool
     {

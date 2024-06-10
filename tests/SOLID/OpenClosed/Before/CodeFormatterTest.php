@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Curiousfin\DesignPatternsDemo\Tests\SOLID\OpenClosed\Before;
@@ -6,9 +7,13 @@ namespace Curiousfin\DesignPatternsDemo\Tests\SOLID\OpenClosed\Before;
 use Curiousfin\DesignPatternsDemo\SOLID\OpenClosed\Before\CodeFormatter;
 use PHPUnit\Framework\TestCase;
 
-class CodeFormatterTest extends TestCase
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
+final class CodeFormatterTest extends TestCase
 {
-
     private CodeFormatter $codeFormatter;
 
     protected function setUp(): void
@@ -22,17 +27,17 @@ class CodeFormatterTest extends TestCase
     }
 
     /**
-     * @dataProvider formatDataProvider
+     * @dataProvider provideFormatCases
      */
     public function testFormat(
         string $code,
         string $formatter,
         string $expectedCode
     ): void {
-        $this->assertSame($expectedCode, $this->codeFormatter->format($code, $formatter));
+        self::assertSame($expectedCode, $this->codeFormatter->format($code, $formatter));
     }
 
-    public static function formatDataProvider(): iterable
+    public static function provideFormatCases(): iterable
     {
         yield [
             'code',

@@ -1,17 +1,18 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Curiousfin\DesignPatternsDemo\Behavioral\ChainOfResponsibility\Before;
 
-class CoffeeHandler
+final class CoffeeHandler
 {
     public function makeCoffee(int $coffeeType): string
     {
-        if ($coffeeType === 1) {
+        if (1 === $coffeeType) {
             return 'Make espresso coffee';
         }
 
-        if ($coffeeType === 2) {
+        if (2 === $coffeeType) {
             return 'Make americano coffee';
         }
 

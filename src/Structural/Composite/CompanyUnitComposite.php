@@ -1,9 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Curiousfin\DesignPatternsDemo\Structural\Composite;
 
-class CompanyUnitComposite extends AbstractCompanyUnit
+final class CompanyUnitComposite extends AbstractCompanyUnit
 {
     private array $employees = [];
 
